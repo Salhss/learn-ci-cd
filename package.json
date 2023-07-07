@@ -1,0 +1,25 @@
+{
+  "name": "learn-ci-cd",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+    "test": "jest --runInBand --verbose --forceExit",
+    "dev": "npx nodemon listener.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^4.18.2",
+    "mongodb": "^5.7.0",
+    "mongoose": "^7.3.2",
+    "supertest": "^6.3.3"
+  },
+  "devDependencies": {
+    "dotenv": "^16.3.1",
+    "jest": "^29.6.1",
+    "nodemon": "^2.0.22"
+  }
+}
