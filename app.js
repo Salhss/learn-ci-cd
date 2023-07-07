@@ -16,8 +16,4 @@ app.use(cors());
 app.use(router);
 app.use(errorHandler);
 
-app.get("/", (req, res) => {
-  res.send("Hello, World!");
-});
-
 module.exports = { app, PORT };

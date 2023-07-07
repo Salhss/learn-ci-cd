@@ -18,4 +18,15 @@ router.post("/todo", async (req, res, next) => {
   }
 });
 
+router.get("/todo", async (req, res, next) => {
+  try {
+    const todos = await Todo.find();
+
+    res.status(200).json(todos);
+  } catch (error) {
+    console.log(error);
+    next(error);
+  }
+});
+
 module.exports = router;

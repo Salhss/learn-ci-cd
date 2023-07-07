@@ -54,6 +54,16 @@ describe("Success Process", function () {
     expect(response.body).toHaveProperty("date", "Selasa");
     expect(response.body).toHaveProperty("description", "Cuci piring kotor");
   });
+  it("return all todos", async () => {
+    const response = await request.get("/todo");
+    expect(response.status).toBe(200);
+    expect(response.body).toBeInstanceOf(Array);
+    expect(response.body[0]).toHaveProperty("_id");
+    expect(response.body[0]).toHaveProperty("activity");
+    expect(response.body[0]).toHaveProperty("status");
+    expect(response.body[0]).toHaveProperty("date");
+    expect(response.body[0]).toHaveProperty("description");
+  });
 
   it("return error when input empty", async () => {
     let newTodo = {
