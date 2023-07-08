@@ -9,7 +9,7 @@ router.post("/todo", async (req, res, next) => {
       throw { name: "Empty Fields" };
 
     const todo = new Todo(req.body);
-    await todo.save;
+    await todo.save();
 
     res.status(201).json(todo);
   } catch (error) {

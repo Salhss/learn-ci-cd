@@ -1,31 +1,16 @@
-const { MongoClient, ServerApiVersion } = require("mongodb");
+const mongoose = require("mongoose");
 
-const url = "mongodb://127.0.0.1:27017";
-const dbName = process.env.DB_NAME;
-
-const client = new MongoClient(url, {
-  serverApi: {
-    version: ServerApiVersion.v1,
-    strict: true,
-    deprecationErrors: true,
-  },
-});
-
-let db;
-
-function getDb() {
-  return db;
-}
-
-async function connect() {
+// Fungsi untuk menghubungkan ke MongoDB Atlas
+async function connectToMongoDB() {
   try {
-    await client.connect();
-    console.log("Connected!");
-    db = client.db(dbName);
-    console.log(db, "<<<<mongo aman");
+    await mongoose.connect(process.env.DB_NAME, {
+      useNewUrlParser: true,
+      useUnifiedTopology: true,
+    });
   } catch (error) {
-    console.log("Error connecting to MongoDB:", error);
+    console.error("Gagal terhubung ke MongoDB Atlas:", error);
+    process.exit(1); // Keluar dari proses jika koneksi gagal
   }
 }
 
-module.exports = { getDb, connect };
+module.exports = connectToMongoDB;
